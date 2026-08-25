@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "product": "PennyPilot",
+    "scope": "Benefits/credits a U.S. household may qualify for, surfaced by state where state-specific. We NEVER invent dollar amounts — only list programs with official eligibility links. Verify your own eligibility with the cited agency.",
+    "ymyl": "Benefit amounts, income limits, and deadlines change yearly. Always confirm on the official program site before relying on any figure.",
+    "sources": [
+      "USDA (SNAP, WIC)",
+      "LIHEAP / Dept. of Health & Human Services",
+      "IRS (EITC, CTC, ACA Premium Tax Credit)",
+      "HealthCare.gov"
+    ]
+  },
+  "federal": [
+    { "id": "eitc", "title": "Earned Income Tax Credit (EITC)", "detail": "Refundable federal credit for low- to moderate-income workers. Worth up to several thousand dollars depending on income and children.", "link": "https://www.irs.gov/credits-deductions/earned-income-tax-credit", "linkLabel": "IRS EITC" },
+    { "id": "ctc", "title": "Child Tax Credit (CTC)", "detail": "Up to $2,000 per qualifying child (2025 rules; confirm current-year amount). Partially refundable.", "link": "https://www.irs.gov/credits-deductions/child-tax-credit", "linkLabel": "IRS CTC" },
+    { "id": "actc", "title": "Adoption / education credits", "detail": "American Opportunity and Lifetime Learning credits for education expenses; Adoption credit.", "link": "https://www.irs.gov/credits-deductions", "linkLabel": "IRS credits" },
+    { "id": "aca", "title": "ACA Premium Tax Credit", "detail": "Subsidies to lower Marketplace health-insurance premiums based on income. Open enrollment typically Nov 1–Jan 15.", "link": "https://www.healthcare.gov", "linkLabel": "HealthCare.gov" },
+    { "id": "ira", "title": "IRA / Roth IRA contributions", "detail": "2026 cap $7,000 ($8,000 age 50+). Tax deduction depends on income and retirement-plan coverage.", "link": "https://www.irs.gov/retirement-plans", "linkLabel": "IRS retirement" },
+    { "id": "hsa", "title": "Health Savings Account", "detail": "Triple-tax-advantaged if paired with a high-deductible plan. 2026 cap $4,300 single / $8,550 family.", "link": "https://www.irs.gov/pub/irs-drop/n-25-12.pdf", "linkLabel": "IRS HSA limits" }
+  ],
+  "stateSites": {
+    "food": { "title": "Food & nutrition assistance", "site": "caloriefig.com", "link": "https://caloriefig.com" },
+    "tips": { "title": "Tipped-worker pay rules", "site": "tipfig.com", "link": "https://tipfig.com" },
+    "moving": { "title": "Relocation cost & tax comparison", "site": "relofig.com", "link": "https://relofig.com" },
+    "tax": { "title": "State tax calculators & deadlines", "site": "fisctalk.com", "link": "https://fisctalk.com" }
+  },
+  "stateFood": {
+    "CA": "CalFresh (SNAP)", "NY": "SNAP / WIC via OTDA", "WA": "Basic Food (SNAP)", "TX": "SNAP / WIC via HHSC",
+    "FL": "SNAP via DCF", "IL": "SNAP via IDHS", "PA": "SNAP via DHS", "CO": "SNAP via CDHS", "MN": "SNAP via MFIP",
+    "DC": "SNAP via DOES"
+  }
+}

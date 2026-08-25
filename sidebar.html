@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app rail">
+    <header class="top">
+      <svg class="logo" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 4.5-3 8.3-7 9-4-0.7-7-4.5-7-9V5l7-3z" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="1.6"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="brand"><span class="name">PennyPilot</span><span class="sub">Pro workbench</span></span>
+      <span class="pill">v1.0</span>
+    </header>
+
+    <div id="setup" class="empty hidden">
+      <div class="big">No location yet</div>
+      <p>Open PennyPilot settings to set your state or ZIP.</p>
+    </div>
+
+    <div id="main" class="hidden">
+      <div class="shield" id="shield"></div>
+      <div class="stat-grid" id="stats"></div>
+      <div class="loc-card" id="locCard" style="display:none"></div>
+      <div class="insight-line" id="insight"></div>
+      <div class="life" id="life"></div>
+      <div class="section-title" style="padding:0 14px">Upcoming</div>
+      <div class="list" id="list"></div>
+      <details class="collapse" id="doneWrap">
+        <summary><span class="chev">▸</span> <span id="doneCount">Done</span></summary>
+        <div class="done-list" id="doneList"></div>
+      </details>
+      <details class="collapse" id="snoozedWrap">
+        <summary><span class="chev">▸</span> <span id="snoozedCount">Snoozed</span></summary>
+        <div class="done-list" id="snoozedList"></div>
+      </details>
+      <div class="tools" id="tools" style="margin:12px 14px 0"></div>
+      <div class="tools" id="sponsors" style="margin:12px 14px 0; display:none"></div>
+    </div>
+
+    <footer class="bar">
+      <a id="optLink">Settings</a>
+      <span class="lock">Private · no account</span>
+    </footer>
+  </div>
+  <script src="core.js"></script>
+  <script src="sites.js"></script>
+  <script src="sidebar.js"></script>
+</body>
+</html>

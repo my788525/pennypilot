@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "product": "PennyPilot",
+    "scope": "Consumer-rights facts surfaced by state. Federal baseline applies everywhere; state lines add locality-specific protections. All sourced. Verify with your state Attorney General before acting.",
+    "sources": [
+      "Federal Trade Commission (FTC) — debt collection, scams",
+      "Consumer Financial Protection Bureau (CFPB)",
+      "Fair Debt Collection Practices Act (FDCPA), 15 U.S.C. 1692",
+      "State Attorney General offices"
+    ]
+  },
+  "federal": [
+    { "id": "fdcca-calls", "title": "Debt collectors may not call before 8 a.m. or after 9 p.m.", "detail": "Under the FDCPA, a collector generally cannot contact you at an unusual time or place, and must stop contacting you at work if you tell them not to.", "source": "FDCPA 15 U.S.C. 1692c" },
+    { "id": "fdcca-validation", "title": "You can demand written validation of a debt.", "detail": "Within 30 days of first contact, request validation; the collector must stop collection until they send proof.", "source": "FDCPA 1692g" },
+    { "id": "irs-impersonation", "title": "The IRS never calls to demand immediate payment.", "detail": "IRS impersonation is the most common government-impersonation scam. Real IRS contact starts by mail. Hang up and call the IRS directly.", "source": "Treasury Inspector General" }
+  ],
+  "states": {
+    "CA": [ { "id": "ca-rent", "title": "California limits how often rent can be raised.", "detail": "For most tenancies, annual increases are capped (≈5% + inflation, max 10%) under AB 1482. Local rent-control ordinances (e.g., SF, LA, Oakland) may be stricter.", "source": "CA Civil Code 1946.2" } ],
+    "NY": [ { "id": "ny-rent", "title": "NYC rent-stabilized tenants have renewal rights.", "detail": "Rent-stabilized tenants are entitled to lease renewals with capped increases set by the Rent Guidelines Board. Verify your unit's status with NYS Homes & Community Renewal.", "source": "NYS Homes & Community Renewal" } ],
+    "WA": [ { "id": "wa-tenant", "title": "Washington limits move-in fees and deposit timing.", "detail": "Move-in fees are capped and deposits must be returned within 21 days with an itemized statement. Local Seattle/King County rules may add protections.", "source": "WA RCW 59.18" } ],
+    "TX": [ { "id": "tx-debt", "title": "Texas has a 4-year statute of limitations on most debts.", "detail": "After 4 years from default, a creditor generally cannot sue. Making a payment can restart the clock — get legal advice before paying old debt.", "source": "TX Bus. & Com. Code 3.118" } ],
+    "FL": [ { "id": "fl-foreclosure", "title": "Florida requires court approval for foreclosure.", "detail": "FL is a judicial-foreclosure state; you have the right to contest. Seek HUD-approved counseling early.", "source": "FL Statutes Ch. 702" } ]
+  }
+}

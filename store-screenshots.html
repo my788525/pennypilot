@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>PennyPilot — Store Screenshots (screenshot each 1280×800 frame)</title>
+<style>
+  :root{
+    --navy:#1e3a8a; --blue:#1d4ed8; --amber:#b7791f; --green:#15803d;
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#eef2f7; --card:#fff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);}
+  .doc{max-width:1320px;margin:0 auto;padding:32px 20px 80px;}
+  .doc h1{font-size:22px;color:var(--navy);}
+  .hint{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0 28px;color:var(--muted);}
+  .hint b{color:var(--ink);}
+  .shot{margin:0 0 40px;}
+  .cap{font-weight:700;color:var(--navy);margin:0 0 8px;font-size:15px;}
+  .cap span{font-weight:400;color:var(--muted);}
+  .frame{width:1280px;height:800px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;display:flex;box-shadow:0 10px 30px rgba(15,23,42,.08);}
+
+  /* Shared chrome */
+  .hd{display:flex;align-items:center;gap:12px;padding:18px 26px;border-bottom:1px solid var(--line);}
+  .logo{width:34px;height:34px;flex:0 0 auto;}
+  .brand .name{font-weight:800;font-size:18px;letter-spacing:.2px;}
+  .brand .tag{font-size:12px;color:var(--muted);}
+  .gauge{margin-left:auto;width:54px;height:54px;border-radius:50%;background:conic-gradient(var(--green) 88%, #e6eaf2 0);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--green);position:relative;}
+  .gauge::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#fff;}
+
+  /* Popup list */
+  .pop{flex:1;padding:22px 26px;overflow:hidden;}
+  .card{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
+  .card h2{margin:0 0 10px;font-size:15px;}
+  .item{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);}
+  .item:first-of-type{border-top:0;}
+  .chk{width:26px;height:26px;border-radius:50%;border:2px solid var(--green);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:800;flex:0 0 auto;}
+  .ttl{font-weight:600;}
+  .pill{margin-left:auto;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;}
+  .p-due{background:#fee2e2;color:#b91c1c;} .p-urg{background:#fef3c7;color:var(--amber);} .p-ok{background:#dcfce7;color:var(--green);}
+  .muted{color:var(--muted);font-size:12px;}
+
+  /* Options */
+  .opt{flex:1;padding:26px 40px;overflow:hidden;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-weight:600;margin-bottom:6px;}
+  .field input,.field select{width:100%;max-width:420px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;}
+  .preview{background:#f1f5f9;border-radius:10px;padding:14px 16px;font-size:13px;color:#334155;}
+
+  /* Notification toast */
+  .note-wrap{flex:1;display:flex;align-items:center;justify-content:center;background:#0b1220;}
+  .toast{width:420px;background:#1f2937;color:#e5e7eb;border-radius:12px;padding:16px 18px;display:flex;gap:14px;box-shadow:0 12px 30px rgba(0,0,0,.4);}
+  .toast .ic{width:42px;height:42px;border-radius:10px;background:var(--blue);flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;}
+  .toast .t{font-weight:700;color:#fff;font-size:15px;}
+  .toast .m{font-size:13px;margin-top:2px;}
+
+  /* Toolbar / privacy proof */
+  .tb{flex:1;background:#202124;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;color:#e8eaed;}
+  .bar{display:flex;align-items:center;gap:14px;background:#2a2b2e;padding:12px 18px;border-radius:12px;}
+  .badge{width:38px;height:38px;border-radius:9px;background:var(--amber);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .lock{display:flex;align-items:center;gap:8px;color:#9aa0a6;font-size:14px;}
+
+  /* Side panel */
+  .sp{flex:1;display:flex;flex-direction:column;padding:20px 24px;overflow:hidden;background:#f8fafc;}
+  .stat-grid{display:flex;gap:12px;margin:12px 0;}
+  .stat{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;}
+  .stat .n{font-size:22px;font-weight:800;color:var(--navy);}
+  .stat .l{font-size:12px;color:var(--muted);}
+
+  /* Annotation */
+  .anno{position:absolute;left:26px;bottom:26px;max-width:520px;background:#fff8e1;border:1px solid #f5d98a;border-left:5px solid #f5b301;border-radius:10px;padding:12px 16px;font-size:14px;color:#5b4b00;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+  .anno b{color:#7a5b00;}
+  .frame.dark .anno{background:#fff8e1;}
+</style>
+</head>
+<body>
+<div class="doc">
+  <h1>PennyPilot — Chrome Web Store screenshot frames</h1>
+  <div class="hint">
+    <b>How to use:</b> Open this file in Chrome. For each <b>.frame</b> below, screenshot just that 1280×800 rectangle
+    (use Chrome DevTools → device toolbar at 1280×800, or crop after a full capture). Save as PNG and upload to the
+    Chrome Web Store listing in this order: <b>1) Popup 2) Options 3) Notification 4) Privacy 5) Side panel</b>.
+    The first frame is your hero — make it the Popup. Replace sample data with your real UI if you prefer authentic captures.
+  </div>
+
+  <!-- 1. POPUP -->
+  <div class="shot">
+    <p class="cap">Frame 1 — Popup / Upcoming <span>(hero · first screenshot)</span></p>
+    <div class="frame">
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div class="hd">
+          <svg class="logo" viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#1d4ed8"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="brand"><div class="name">PennyPilot</div><div class="tag">Your U.S. money dates, by ZIP</div></div>
+          <div class="gauge">88</div>
+        </div>
+        <div class="pop">
+          <div class="card">
+            <h2>Upcoming (3)</h2>
+            <div class="item"><div class="chk">✓</div><div class="ttl">U.S. federal Tax Day<div class="muted">File 2026 return</div></div><span class="pill p-due">today</span></div>
+            <div class="item"><div class="chk">✓</div><div class="ttl">Washington state tax deadline<div class="muted">2026 return</div></div><span class="pill p-urg">6d</span></div>
+            <div class="item"><div class="chk">✓</div><div class="ttl">Seattle minimum wage → $21.00/hr<div class="muted">Effective Jan 1</div></div><span class="pill p-ok">38d</span></div>
+            <div class="item"><div class="chk">✓</div><div class="ttl">Car registration<div class="muted">My reminder</div></div><span class="pill p-urg">3d</span></div>
+          </div>
+          <div class="card">
+            <h2>Today's insight</h2>
+            <p class="muted">Estimated-tax late payment accrues IRS interest plus a 0.5%/month failure-to-pay penalty.</p>
+          </div>
+        </div>
+      </div>
+      <div class="anno"><b>Your next money date, one click away.</b> Days-left badges and a privacy shield show what's due — no account needed.</div>
+    </div>
+  </div>
+
+  <!-- 2. OPTIONS -->
+  <div class="shot">
+    <p class="cap">Frame 2 — Options / Set location</p>
+    <div class="frame">
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div class="hd">
+          <svg class="logo" viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#1d4ed8"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="brand"><div class="name">PennyPilot</div><div class="tag">Settings</div></div>
+        </div>
+        <div class="opt">
+          <div class="card" style="border:0;padding:0;">
+            <h2>Your location</h2>
+            <div class="field"><label>ZIP code <span class="muted">(unlocks city/county data)</span></label><input value="98101" /></div>
+            <div class="field"><label>State</label><select><option>Washington</option><option>California</option><option>Texas</option></select></div>
+            <div class="preview">
+              <div><b>State:</b> Washington</div>
+              <div><b>State min. wage:</b> $16.66/hr</div>
+              <div><b>State tax deadline:</b> Apr 15</div>
+              <div style="margin-top:8px;color:#0f766e;">ZIP 98101 → Seattle, King County, WA</div>
+            </div>
+          </div>
+          <div class="card" style="border:0;padding:0;">
+            <h2>My reminders</h2>
+            <div class="field"><label>Name</label><input placeholder="e.g. Car registration" /></div>
+            <div class="field"><label>Due date</label><input type="date" /></div>
+          </div>
+        </div>
+      </div>
+      <div class="anno"><b>Enter a ZIP → city &amp; county dates unlock.</b> Location resolves locally; it never leaves your browser.</div>
+    </div>
+  </div>
+
+  <!-- 3. NOTIFICATION -->
+  <div class="shot">
+    <p class="cap">Frame 3 — Notification example</p>
+    <div class="frame dark">
+      <div class="note-wrap">
+        <div class="toast">
+          <div class="ic">🔔</div>
+          <div>
+            <div class="t">PennyPilot: U.S. federal Tax Day</div>
+            <div class="m">Due today. File your 2026 return to avoid IRS penalties.</div>
+          </div>
+        </div>
+      </div>
+      <div class="anno"><b>Quiet, useful alerts — no spam.</b> A heads-up 7 days before each key date, with quiet hours so you're never nagged overnight.</div>
+    </div>
+  </div>
+
+  <!-- 4. PRIVACY -->
+  <div class="shot">
+    <p class="cap">Frame 4 — Privacy proof</p>
+    <div class="frame dark">
+      <div class="tb">
+        <div class="bar">
+          <div class="badge">6</div>
+          <svg class="logo" viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#1d4ed8"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-weight:700;">PennyPilot</span>
+        </div>
+        <div class="lock">🔒 Private · no account · no tracking</div>
+        <div style="color:#9aa0a6;font-size:13px;max-width:520px;text-align:center;">Everything runs on your device. No server. No analytics. Your location never leaves the browser.</div>
+      </div>
+      <div class="anno"><b>Runs on your device. No tracking.</b> This is the differentiator — say it on the listing and in the first screenshot.</div>
+    </div>
+  </div>
+
+  <!-- 5. SIDE PANEL -->
+  <div class="shot">
+    <p class="cap">Frame 5 — Side panel workbench</p>
+    <div class="frame">
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div class="hd">
+          <svg class="logo" viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#1d4ed8"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="brand"><div class="name">PennyPilot</div><div class="tag">Pro workbench</div></div>
+          <span class="pill p-ok">v1.0</span>
+        </div>
+        <div class="sp">
+          <div class="gauge" style="margin:0 auto 4px;">88</div>
+          <div class="stat-grid">
+            <div class="stat"><div class="n">9</div><div class="l">Upcoming</div></div>
+            <div class="stat"><div class="n">4</div><div class="l">On time</div></div>
+            <div class="stat"><div class="n">2</div><div class="l">Urgent ≤14d</div></div>
+          </div>
+          <div class="card" style="border:0;padding:0;">
+            <h2>Upcoming</h2>
+            <div class="item"><div class="chk">✓</div><div class="ttl">U.S. federal Tax Day</div><span class="pill p-due">today</span></div>
+            <div class="item"><div class="chk">✓</div><div class="ttl">WA state tax deadline</div><span class="pill p-urg">6d</span></div>
+            <div class="item"><div class="chk">✓</div><div class="ttl">Car registration</div><span class="pill p-urg">3d</span></div>
+            <div class="item"><div class="chk">✓</div><div class="ttl">Seattle min wage → $21/hr</div><span class="pill p-ok">38d</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="anno"><b>Track everything in one place.</b> The workbench lists all dates, lets you check off done items, and shows your privacy score.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

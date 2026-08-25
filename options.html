@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>PennyPilot · Settings</title>
+</head>
+<body>
+  <div class="app wide">
+    <header class="hd">
+      <div class="brand">
+        <svg class="shield" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z"/>
+          <path class="chk" d="M8.5 12.2l2.4 2.4 4.6-4.8" fill="none"/>
+        </svg>
+        <div><div class="name">PennyPilot</div><div class="tag">Settings</div></div>
+      </div>
+    </header>
+
+    <div class="pin-hint">
+      📌 <b>Tip:</b> Right-click the PennyPilot icon in the toolbar and choose <b>“Pin to toolbar”</b> so your money dates are always one click away.
+    </div>
+
+    <section class="card">
+      <h2>Your location</h2>
+      <label>ZIP code <span class="muted small">(unlocks city/county data)</span>
+        <input id="zip" type="text" inputmode="numeric" maxlength="5" placeholder="e.g. 98101" />
+      </label>
+      <div id="preview" class="preview"></div>
+      <details class="adv">
+        <summary>Can’t find your ZIP, or prefer state-only?</summary>
+        <label>State
+          <select id="state"><option value="">— select —</option></select>
+        </label>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2>Life events</h2>
+      <p class="muted small">Pick what you’re going through — we’ll surface the dates you shouldn’t miss.</p>
+      <div id="lifeChecks" class="chips"></div>
+      <div id="lifeNote" class="note-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>My reminders</h2>
+      <p class="muted small">Add your own dated reminders — a bill, a renewal, anything. They’ll appear alongside your money dates and can be checked off like the rest.</p>
+      <div class="grid2">
+        <label>Name <input id="crName" type="text" placeholder="e.g. Car registration" /></label>
+        <label>Due date <input id="crDue" type="date" /></label>
+      </div>
+      <label>Note <textarea id="crNote" rows="2" placeholder="optional details"></textarea></label>
+      <div class="row-actions">
+        <button class="linkbtn" id="crAdd">Add reminder</button>
+        <span id="crMsg" class="muted small"></span>
+      </div>
+      <div id="customList" class="crem-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>Quiet hours</h2>
+      <p class="muted small">Pause due-date notifications during these hours (badge still updates).</p>
+      <div class="qh-row">
+        <label class="qh-toggle"><input type="checkbox" id="qhOn" /> Enable quiet hours</label>
+      </div>
+      <div class="qh-row qh-times" id="qhTimes">
+        <label>From <input id="qhStart" type="number" min="0" max="23" value="22" /></label>
+        <label>To <input id="qhEnd" type="number" min="0" max="23" value="8" /></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Sponsored content</h2>
+      <p class="muted small">PennyPilot may show clearly-labeled sponsored offers from third-party advertisers in its own panels. These are generic (never based on your data) and you can disable them anytime.</p>
+      <label><input type="checkbox" id="adsOn" checked /> Show sponsored offers</label>
+    </section>
+
+    <section class="card">
+      <h2>Data &amp; privacy</h2>
+      <p class="muted small">PennyPilot runs entirely on your device. No account, no server, no tracking. Your ZIP is resolved locally to show city/county data and never leaves the browser.</p>
+      <div class="row-actions">
+        <button class="linkbtn" id="openPanel">Open side-panel workbench ▸</button>
+        <button class="linkbtn" id="exportBtn">Export my data (JSON)</button>
+        <button class="linkbtn danger" id="clearBtn">Clear “done” history</button>
+      </div>
+      <span id="clearNote" class="muted small"></span>
+    </section>
+
+    <section class="card sources">
+      <h2>Data sources</h2>
+      <p class="muted small">State minimum wages &amp; tax deadlines: U.S. DOL, IRS, state Departments of Revenue (retrieved 2026-08). City wages &amp; taxes: official city publications (Seattle OLS, SF OLSE, DC DOES, Denver Auditor, Minneapolis, CA DIR, NYC/Phila. depts). Benefits: USDA, IRS, HealthCare.gov. Verify any figure with the cited source before relying on it.</p>
+    </section>
+
+    <footer class="ft">Private · no account · PennyPilot</footer>
+  </div>
+  <script src="core.js"></script>
+  <script src="sites.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

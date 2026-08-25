@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "generated": "2026-08-25",
+    "note": "Bundled SAMPLE sponsor creatives. Replace with your brokered third-party advertisers, or enable ADS_ENABLED + ADS_URL in core.js to serve from data.pennypilot.app/ads.json (first-party delivery of third-party creatives — no remote code). Ads render ONLY in PennyPilot's own UI, are clearly labeled 'Sponsored', are generic (no per-user targeting), and are user-disableable. No advertiser receives any user data."
+  },
+  "ads": [
+    {
+      "id": "sample-taxsw",
+      "advertiser": "Sample: TaxSoft (replace me)",
+      "title": "File your 2026 return with confidence",
+      "body": "Example sponsor placement — swap in a real third-party advertiser you broker.",
+      "url": "https://example.com/?ref=pennypilot",
+      "category": "tax"
+    },
+    {
+      "id": "sample-credit",
+      "advertiser": "Sample: CreditCo (replace me)",
+      "title": "Monitor your credit year-round",
+      "body": "Example sponsor placement — clearly labeled as Sponsored. No behavioral targeting.",
+      "url": "https://example.org/?ref=pennypilot",
+      "category": "credit"
+    }
+  ]
+}

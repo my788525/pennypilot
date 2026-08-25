@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "product": "PennyPilot",
+    "scope": "Seasonal, evergreen micro-insights shown one per day. All factual; no dollar amounts invented.",
+    "sources": ["IRS", "HealthCare.gov", "SSA", "energy.gov"]
+  },
+  "items": [
+    { "when": "jan", "text": "January: pull a free credit report at annualcreditreport.gov. You're entitled to one free report per bureau every week." },
+    { "when": "jan", "text": "Tax season opens late January. Gather W-2s/1099s — employers must send them by Jan 31." },
+    { "when": "feb", "text": "February: many states' property-tax 2nd installment is delinquent around Apr 10. Check your county treasurer now." },
+    { "when": "mar", "text": "March: IRA contributions for the prior year can still be made until Tax Day. Last chance to lower last year's tax bill." },
+    { "when": "apr", "text": "April 15: federal Tax Day for most. An extension gives time to file, not to pay — interest accrues from the original due date." },
+    { "when": "apr", "text": "Open enrollment for health insurance ends mid-January; a qualifying life event (marriage, birth, move, job loss) can open a Special Enrollment Period." },
+    { "when": "may", "text": "May: review withholdings after filing. If you got a big refund or owed a lot, adjust your W-4 to better match the year." },
+    { "when": "jun", "text": "June: many states' fiscal year starts July 1 — city minimum wages and local taxes often change then. Re-check your locality." },
+    { "when": "jul", "text": "July 1: a wave of city minimum wages (CA, DC, others) increases. If you earn tips, confirm your new local cash wage." },
+    { "when": "aug", "text": "August: if you're self-employed, the Q3 estimated-tax deadline (Sep 15) is about six weeks out — start setting aside now to avoid the 0.5%/month IRS penalty." },
+    { "when": "sep", "text": "September 15: Q3 estimated tax due for the self-employed. Mark it before the quarter ends." },
+    { "when": "oct", "text": "October: Open Enrollment for ACA Marketplace begins Nov 1. Preview plans and subsidies at HealthCare.gov." },
+    { "when": "nov", "text": "November 1: ACA Open Enrollment starts. Premium tax credits are based on income — a mid-year raise can change your subsidy." },
+    { "when": "dec", "text": "December 31: deadline for many tax-year moves — HSA, FSA, 529, and charitable gifts must be made by year-end." },
+    { "when": "dec", "text": "Year-end: energy-efficiency federal credits (heat pump, solar, insulation) generally require the upgrade placed in service by Dec 31." }
+  ]
+}

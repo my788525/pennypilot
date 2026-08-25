@@ -1,0 +1,15 @@
+# WorkBuddy project metadata (not part of the extension)
+.workbuddy/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Build artifacts
+*.zip
+dist/
+out/
+
+# Dependencies (none for the extension runtime)
+node_modules/

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PennyPilot Privacy Policy · AllMoneyCalc</title>
+<style>
+  :root { --navy:#1e3a8a; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:760px; margin:0 auto; padding:48px 24px 80px; }
+  header { border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:32px; }
+  .brand { font-weight:700; color:var(--navy); letter-spacing:.2px; }
+  h1 { font-size:28px; margin:8px 0 4px; }
+  .meta { color:var(--muted); font-size:14px; }
+  h2 { font-size:19px; margin:36px 0 8px; color:var(--navy); }
+  p, li { color:#1e293b; }
+  a { color:var(--navy); }
+  .callout { background:#eef2ff; border:1px solid #c7d2fe; border-radius:10px; padding:14px 18px; margin:18px 0; }
+  footer { margin-top:48px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">AllMoneyCalc</div>
+    <h1>PennyPilot Privacy Policy</h1>
+    <div class="meta">Effective date: 2026-08-25 · Extension: PennyPilot — Tax &amp; Bill Deadline Reminders (Chrome Web Store) · Publisher: AllMoneyCalc · Contact: support@allmoneycalc.com</div>
+  </header>
+
+  <div class="callout">
+    <strong>Summary:</strong> PennyPilot is private by default. It runs entirely on your device and does <strong>not</strong> collect, transmit, or store personal data on any server. The publisher never receives your location, reminders, or usage.
+  </div>
+
+  <h2>1. What we store (locally only)</h2>
+  <p>PennyPilot saves the following in your browser's synchronized storage (<code>chrome.storage.sync</code> — synced across your signed-in devices):</p>
+  <ul>
+    <li>Your selected <strong>state</strong> (e.g., "WA").</li>
+    <li>Your optional <strong>ZIP code</strong> (used only to resolve more precise, location-aware reminders on your device).</li>
+    <li>Notification throttle timestamps (so we don't remind you about the same date twice in 30 days).</li>
+    <li>Your "My reminders" entries (names, due dates, and notes you create).</li>
+    <li>Your sponsored-content preference (whether to show sponsored offers).</li>
+  </ul>
+  <p>None of this is ever uploaded. There is <strong>no account, no login, and no server</strong>.</p>
+
+  <h2>2. What we do NOT do</h2>
+  <ul>
+    <li>We do <strong>not</strong> track you, show behavioral or targeted ads, or build a profile.</li>
+    <li>We do <strong>not</strong> send your location, state, or ZIP to any remote server.</li>
+    <li>We do <strong>not</strong> embed third-party trackers or remote code.</li>
+    <li>We do <strong>not</strong> read the contents of the web pages you visit (the extension requests no host permissions).</li>
+  </ul>
+
+  <h2>3. How reminders work</h2>
+  <p>Reminder dates come from a <strong>bundled dataset</strong> inside the extension (sourced from public U.S. authorities: U.S. Department of Labor, IRS, and state Departments of Revenue). Your device computes which dates are upcoming and shows a badge/notification locally. No network request is made to determine your reminders.</p>
+  <p>PennyPilot currently makes <strong>no outbound network requests</strong> at all. A future, strictly opt-in update could periodically fetch a small, generic, <strong>public</strong> data-override file (e.g., scam alerts, temporary tax-filing extensions) from our own server. That request would send <strong>no personal data</strong> — only the public file is downloaded and merged into your local reminders. Such a feature would only activate in a version that re-declares the corresponding permission, and remains off by default.</p>
+
+  <h2>4. Sponsored content</h2>
+  <p>PennyPilot may display <strong>sponsored offers</strong> from third-party advertisers. These are delivered compliantly:</p>
+  <ul>
+    <li><strong>Where they appear:</strong> only inside PennyPilot's own panels (popup, side panel, settings). They are <strong>never</strong> injected into the web pages you visit.</li>
+    <li><strong>Labeled:</strong> every sponsored item is clearly marked "Sponsored" / "Ad".</li>
+    <li><strong>Generic, not targeted:</strong> offers are the same for all users. They are <strong>not</strong> selected or ranked using your ZIP, state, life events, or any other data you provide. No advertiser receives any of your information.</li>
+    <li><strong>First-party delivery, no remote code:</strong> creative is served as static data (from our own host or bundled in the extension). No third-party ad SDK or remote script runs — this satisfies the Manifest V3 security model.</li>
+    <li><strong>Your control:</strong> you can turn sponsored offers off at any time in Settings ("Sponsored content"). When off, none are fetched or shown.</li>
+  </ul>
+  <p>If you disable sponsored content, PennyPilot's reminders and tools are fully functional without it.</p>
+
+  <h2>5. Data sources</h2>
+  <ul>
+    <li>U.S. Department of Labor — Wage and Hour Division (minimum wage)</li>
+    <li>IRS federal tax calendar</li>
+    <li>State Departments of Revenue (individual income-tax deadlines)</li>
+  </ul>
+  <p>All figures are drawn from public authorities and are clearly marked with their source and retrieval date inside the bundled data.</p>
+
+  <h2>6. Children</h2>
+  <p>PennyPilot is not directed to children under 13 and does not knowingly collect their data.</p>
+
+  <h2>7. Changes</h2>
+  <p>If this policy changes, the new version will be posted at this URL with an updated effective date.</p>
+
+  <h2>8. Contact</h2>
+  <p>For privacy questions, contact: <strong>support@allmoneycalc.com</strong></p>
+
+  <footer>
+    This policy governs the PennyPilot browser extension published by AllMoneyCalc. It is separate from the AllMoneyCalc website privacy notice.
+  </footer>
+</div>
+</body>
+</html>

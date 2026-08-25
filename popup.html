@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>PennyPilot</title>
+</head>
+<body>
+  <div class="app">
+    <header class="hd">
+      <div class="brand">
+        <svg class="shield" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z"/>
+          <path class="chk" d="M8.5 12.2l2.4 2.4 4.6-4.8" fill="none"/>
+        </svg>
+        <div>
+          <div class="name">PennyPilot</div>
+          <div class="tag">Your U.S. money dates, by ZIP</div>
+        </div>
+      </div>
+      <div class="gauge" id="gauge">
+        <svg viewBox="0 0 44 44">
+          <circle cx="22" cy="22" r="18" class="track"/>
+          <circle cx="22" cy="22" r="18" class="prog" id="gaugeArc"/>
+        </svg>
+        <div class="gval" id="gaugeVal">–</div>
+      </div>
+    </header>
+
+    <div class="saved" id="saved"></div>
+
+    <div class="banner" id="firstRun" hidden>
+      Set your location to unlock local minimum-wage, tax, and benefit dates.
+      <a id="firstRunLink">Open settings →</a>
+    </div>
+
+    <section class="card" id="upcomingCard">
+      <h2>Upcoming <span class="muted" id="upCount"></span></h2>
+      <div id="upcoming" class="list"></div>
+    </section>
+
+    <details class="card done" id="doneCard">
+      <summary>Done <span class="muted" id="doneCount"></span></summary>
+      <div id="done" class="list"></div>
+    </details>
+
+    <details class="card snoozed" id="snoozedCard">
+      <summary>Snoozed <span class="muted" id="snoozedCount"></span></summary>
+      <div id="snoozed" class="list"></div>
+    </details>
+
+    <section class="card" id="locCard" hidden>
+      <h2>Your locality</h2>
+      <div id="locality" class="loc"></div>
+    </section>
+
+    <section class="card" id="rightsCard" hidden>
+      <h2>Your rights</h2>
+      <div id="rights" class="mini"></div>
+    </section>
+
+    <section class="card" id="benCard" hidden>
+      <h2>You may qualify for</h2>
+      <div id="benefits" class="mini"></div>
+    </section>
+
+    <section class="card insight">
+      <h2>Today's insight</h2>
+      <p id="insight" class="muted"></p>
+    </section>
+
+    <section class="card warn">
+      <h2>The cost of waiting</h2>
+      <p id="waiting" class="small"></p>
+    </section>
+
+    <section class="card recs sponsored" id="recsCard" hidden>
+      <h2>Recommended tools <span class="tag-sponsored">Partner</span></h2>
+      <div id="recs" class="recs-row"></div>
+      <p class="disc" id="disc"></p>
+    </section>
+
+    <section class="card ads" id="adsCard" hidden>
+      <h2>Sponsored <span class="tag-sponsored">Ad</span></h2>
+      <div id="ads" class="ads-row"></div>
+    </section>
+
+    <footer class="bar">
+      <a id="wbLink" class="panel-btn">Workbench ▸</a>
+      <a id="optLink">Settings</a>
+      <span class="lock">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.8"/></svg>
+        Private · no account
+      </span>
+    </footer>
+  </div>
+  <script src="core.js"></script>
+  <script src="sites.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
