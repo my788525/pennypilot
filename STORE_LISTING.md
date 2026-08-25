@@ -15,21 +15,28 @@ Never miss a tax, bill, or wage deadline. Private reminders tailored to your U.S
 *(118 chars — leads with benefit + 3 keywords, ends on the privacy differentiator.)*
 
 ## Description (full) 🟦 first ~150 chars are weighted most
-PennyPilot is the private reminder app for U.S. money deadlines. Set your state or ZIP once and get automatic, location-aware reminders for tax deadlines, minimum-wage changes, open enrollment, FAFSA, and your own bills — with zero typing and zero tracking.
+PennyPilot is the private reminder tool for U.S. money dates. Set your state or ZIP once and get location-aware reminders for tax deadlines, minimum-wage changes, open enrollment, and FAFSA — pre-loaded from real U.S. government data, no typing needed. Then add your own bills and renewals (rent, car registration, insurance, loans) in a few taps; they join the same countdown. Everything runs on your device — zero tracking.
 
 **Why people install PennyPilot**
 - 🗓️ **Never miss a tax deadline** — federal Tax Day, quarterly estimated-tax due dates (Apr/Jun/Sep/Jan), and your state's income-tax deadline, all pre-loaded by location.
 - 📍 **Tailored to your ZIP** — enter a ZIP to unlock city- and county-level reminders (minimum-wage hikes, local tax dates) that generic calendars miss.
 - 🔔 **Quiet, useful alerts** — a heads-up 7 days before each key date, with quiet hours so you're never nagged overnight. No spam, no fake urgency.
-- ✅ **Add your own bills & renewals** — car registration, rent, insurance, anything with a date. They sit alongside your money dates and can be checked off.
+- ✅ **Track your own bills & renewals** — add any date (car registration, rent, insurance, anything). They sit alongside your money dates and can be checked off. You add these yourself; PennyPilot never reads your email, bank, or statements.
 - 🛡️ **Private by design** — everything runs on your device. No account, no server, no tracking. Your location never leaves the browser.
 - 💡 **Know your rights & benefits** — surface relevant worker rights and benefit programs (e.g., SNAP, EITC) for your state.
 
 **What makes it different**
-Most reminder apps make you type every bill by hand. PennyPilot starts from real U.S. government data (U.S. Department of Labor, IRS, state Departments of Revenue), so the dates that actually affect you are already there — you just confirm your location.
+Most reminder apps are a blank list you fill in by hand. PennyPilot pre-loads the government dates that actually affect you (U.S. Department of Labor, IRS, state Departments of Revenue) the moment you set your location — so the dates you'd otherwise forget are already there. Your personal bills are yours to add.
 
 **Who it's for**
 Anyone in the U.S. who wants to avoid late fees, IRS penalties, and missed open-enrollment windows without handing their data to yet another account.
+
+**How reminders work (read this first)**
+PennyPilot reminds you about two kinds of dates:
+1. **Public money dates we pre-load by state & ZIP** — federal & state tax deadlines, minimum-wage changes, open-enrollment windows, FAFSA. These appear automatically; no typing needed.
+2. **Your own bills & due dates** — rent, car registration, insurance, loans, anything. You add these yourself, in seconds.
+
+PennyPilot does **not** automatically detect, scan, or import your bills. It never accesses your email, bank, or statements. If you want a reminder for a bill, you add it — that's the trade-off for staying 100% private and not uploading your financial life.
 
 **Permissions, explained**
 - Alarms — to check your dates daily in the background.
