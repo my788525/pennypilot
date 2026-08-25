@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PennyPilot 付费订阅落地蓝图 · 中国大陆个人身份可行版（2026-08-25 联网核查）</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2933; --sub:#5b6573; --line:#e3e8ef;
+    --red:#d64545; --amber:#e08a1e; --green:#2f9e6f; --blue:#2f6fd6; --purple:#7a52c7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 22px 60px}
+  h1{font-size:25px;margin:0 0 4px}
+  .sub{color:var(--sub);font-size:13px;margin-bottom:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0;box-shadow:0 1px 3px rgba(20,30,50,.04)}
+  h2{font-size:19px;margin:2px 0 12px;display:flex;align-items:center;gap:8px}
+  h2 .n{display:inline-flex;width:26px;height:26px;border-radius:7px;background:var(--blue);color:#fff;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+  h3{font-size:15px;margin:16px 0 6px;color:var(--ink)}
+  p{margin:8px 0}
+  .muted{color:var(--sub);font-size:13px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#eef2f8;font-weight:600}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;color:#fff}
+  .p-low{background:var(--green)} .p-med{background:var(--amber)} .p-hi{background:var(--red)} .p-ok{background:var(--blue)} .p-no{background:#8b95a5}
+  .tag{display:inline-block;padding:1px 7px;border-radius:6px;font-size:11.5px;background:#eef2f8;color:var(--sub);margin-right:4px}
+  .warn{background:#fff5f3;border:1px solid #f3c9c0;border-left:4px solid var(--red);border-radius:10px;padding:12px 16px;margin:12px 0}
+  .good{background:#f1f9f4;border:1px solid #bfe6cf;border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;margin:12px 0}
+  ul{margin:8px 0 8px 2px;padding-left:20px} li{margin:5px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  .kpis{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 2px}
+  .kpi{background:#eef2f8;border-radius:10px;padding:10px 14px;min-width:150px}
+  .kpi b{font-size:19px;display:block;color:var(--blue)} .kpi span{font-size:12px;color:var(--sub)}
+  code{background:#eef2f8;padding:1px 5px;border-radius:5px;font-size:12.5px}
+  pre{background:#0f172a;color:#e2e8f0;padding:14px 16px;border-radius:10px;overflow:auto;font-size:12.5px;line-height:1.5}
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:14px 0}
+  .node{background:#eef2f8;border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:140px;flex:1;font-size:13px}
+  .node b{display:block;color:var(--blue);font-size:13px;margin-bottom:3px}
+  .arrow{display:flex;align-items:center;color:var(--sub);font-size:20px}
+  .foot{color:var(--sub);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  a{color:var(--blue)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>PennyPilot 付费订阅落地蓝图</h1>
+  <div class="sub">中国大陆个人身份 · 可行路线与合规清单 · 2026-08-25 联网核查（Stripe / Creem / Lemon Squeezy / Paddle 官方支持国家页 + CWS 支付政策文档交叉验证）</div>
+
+  <div class="card">
+    <div class="kpis">
+      <div class="kpi"><b>2021-02-01</b><span>CWS 原生支付彻底关停</span></div>
+      <div class="kpi"><b>3.9%+$0.40</b><span>Creem(MoR) 费率 · 支付宝到账</span></div>
+      <div class="kpi"><b>✗</b><span>Stripe 标准收款不含中国大陆个人</span></div>
+      <div class="kpi"><b>MoR</b><span>无需海外实体 / 不自理全球税</span></div>
+      <div class="kpi"><b>v2</b><span>付费作为独立版本提交复审</span></div>
+      <div class="kpi"><b>3 件套</b><span>ToS + Refund + 隐私政策修订</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <b>核心结论：</b>中国大陆个人身份<b>完全可以做付费订阅</b>，但必须<b>放弃 Stripe / ExtensionPay 路线</b>（它们依赖 Stripe 商户号，标准地区<b>不含中国大陆个人</b>，需海外公司才能开）。正确路径是 <b>MoR（Merchant of Record，名义商家）</b>——平台当法律上的卖家，替你收全球卡、自动处理 VAT / 销售税、处理拒付退款，再把干净资金结算给你。<b>你无需海外公司、无需自己报全球税。</b>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <h2><span class="n">1</span>政策事实：Chrome Web Store 已无原生支付</h2>
+    <p class="muted">起点不是写代码，而是确认政策边界——Google 在 2021 年后彻底移除了扩展内购能力。</p>
+    <ul>
+      <li><b>CWS 原生支付（Chrome Web Store Payments）已于 2021-02-01 关停</b>，没有「CWS 内置订阅」这回事。</li>
+      <li>官方文档明确：<b>新付费扩展必须改用第三方支付处理商</b>，Google 不再替你管钱、管授权、管税务。</li>
+      <li>这意味着：只要做付费，就得自建「<b>支付 + 授权校验</b>」这套栈——你自己对合规性负责。</li>
+      <li><b>隐性陷阱：</b>一旦订阅要邮箱 / 账号，CWS 当前的「<b>零数据收集</b>」申报必须改，否则复审会被打回。</li>
+    </ul>
+    <div class="good">
+      <p><b>对 PennyPilot 的利好：</b>你当前审核中的版本是<b>免费 + 零收集</b>，正好是「最小外露面」基线。付费做成 <b>v2 独立提交</b>，不干扰本轮审核。</p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <h2><span class="n">2</span>支付商对比：大陆个人现实排序</h2>
+    <table>
+      <tr><th>平台</th><th>类型</th><th>大陆个人友好度</th><th>费率</th><th>到账 / 税务</th><th>说明</th></tr>
+      <tr><td><b>Creem</b></td><td>MoR</td><td><span class="pill p-low">✅ 首选</span></td><td>3.9%+$0.40</td><td>支付宝直接到账</td><td>审核快、现代结账（卡 / Apple Pay / Google Pay）、内置 License / 订阅 / Webhook，专为 SaaS & 扩展设计</td></tr>
+      <tr><td>Lemon Squeezy</td><td>MoR</td><td><span class="pill p-hi">⚠️ 不推荐</span></td><td>5%+$0.5</td><td>打款常失败</td><td>已被 Stripe 收购，迁到 "Stripe Managed Payments"，仅支持 35+ 国（<b>不含中国</b>），激活 / 税表卡顿</td></tr>
+      <tr><td>Paddle</td><td>MoR</td><td><span class="pill p-med">⚠️ 别单押</span></td><td>含在定价</td><td>不确定</td><td>老牌稳，但 2026 审核极挑剔、常拒个人、对中国打款不确定</td></tr>
+      <tr><td>Polar / Fungies</td><td>轻 MoR</td><td><span class="pill p-med">◐</span></td><td>无小额固定费</td><td>—</td><td>适合小额数字产品，生态较新</td></tr>
+      <tr><td>Gumroad</td><td>MoR</td><td><span class="pill p-med">◐</span></td><td>10%+$0.5</td><td>—</td><td>能用但费率高，适合一次性 License 非技术接入</td></tr>
+      <tr><td>Stripe / ExtensionPay</td><td>PSP</td><td><span class="pill p-no">✗ 不可行</span></td><td>2.9%+$0.3</td><td>需海外公司</td><td>标准收款地区<b>不含中国大陆个人</b>；ExtensionPay 底层即 Stripe → 同样被堵。虚假海外资料有封号冻资风险</td></tr>
+    </table>
+    <div class="good">
+      <p><b>推荐结论：</b>v1 用 <b>Creem（MoR）</b>；跑通后若量大、想控费率，再迁 <b>Stripe + Cloudflare Worker</b>（此时需解决海外公司 / 收款实体问题，属「做大之后」的命题，不在本期蓝图内）。</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <h2><span class="n">3</span>推荐架构：Creem + Cloudflare Worker 校验链</h2>
+    <p class="muted">你站点本就在 Cloudflare 上，Worker 当 entitlement（授权）校验后端正好，零额外基础设施。</p>
+    <div class="flow">
+      <div class="node"><b>① 扩展 popup</b>点「Upgrade」→ <code>openCheckout()</code> 打开 Creem 结账页</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>② 用户付费</b>Creem 收卡、处理 VAT / 拒付，回跳 success URL</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>③ Webhook</b>Creem 通知 Worker（签名校验）</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>④ Worker</b>校验后写 entitlement 到 KV / D1</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>⑤ 扩展启动</b>查 Worker 拿状态 → 解锁高级功能</div>
+    </div>
+    <h3>关键安全铁律</h3>
+    <ul>
+      <li><b>永远服务端校验授权</b>——客户端只「显示」解锁状态，绝不信本地 <code>localStorage.isPremium</code>（用户可改）。</li>
+      <li>Worker 用 <b>Creem 签名校验 Webhook</b> 真伪，再下发 entitlement；KV 存 <code>{licenseKey, status, expiresAt}</code>。</li>
+      <li><b>隐私友好（契合「无账号」卖点）：</b>走 Creem 的 <b>License Key 模式</b>——扩展本地只存 <code>licenseKey</code>，<b>不碰邮箱</b>；邮箱由 Creem（MoR）持有 → CWS「数据收集」申报仍可保持极简，只需在隐私政策注明「支付由 Creem 处理」。</li>
+    </ul>
+    <h3>Worker 校验伪代码（思路）</h3>
+    <pre>// Cloudflare Worker
+export default {
+  async fetch(req) {
+    const url = new URL(req.url);
+    if (url.pathname === '/entitlement') {
+      const key = url.searchParams.get('license');
+      const rec = await KV.get(key, { type: 'json' });
+      // rec = { status:'active', expiresAt: 1710000000 }
+      return Response.json(rec ?? { status:'none' });
+    }
+    if (url.pathname === '/webhook' && req.method === 'POST') {
+      const sig = req.headers.get('creem-signature');
+      if (!verify(sig, await req.text(), SECRET)) return new Response('bad',{status:401});
+      const evt = await req.json();
+      if (evt.event_type === 'checkout.completed') {
+        await KV.put(evt.data.license_key, JSON.stringify({
+          status: 'active', expiresAt: evt.data.subscription?.next_payment_at
+        }));
+      }
+      return new Response('ok');
+    }
+  }
+}</pre>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <h2><span class="n">4</span>Freemium 功能切分（保安装量优先）</h2>
+    <p class="muted">原则：<b>免费层保留核心卖点</b>（州 / ZIP 预置提醒全免费），付费层只做「增强」，绝不砍掉免费核心——否则砍安装量、反噬 CWS 排名。</p>
+    <table>
+      <tr><th>层级</th><th>功能</th><th>是否需账号</th></tr>
+      <tr><td><b>免费（核心）</b></td><td>州 / ZIP 预置提醒全开（联邦税、州税截止、最低工资变动、Open Enrollment、FAFSA）；标准提前天数（如 ≤3 天通知）；最多 3 条自定义账单；单设备；桌面通知</td><td><span class="pill p-ok">无账号</span></td></tr>
+      <tr><td><b>Premium（增强）</b></td><td><b>无限</b>自定义账单；更长提前提醒（14 / 30 天）；<code>.ics</code> 日历导出 / 可打印清单；多 ZIP / 多辖区切换（家庭、跨州）；高级布局 / 主题</td><td><span class="pill p-ok">无账号</span></td></tr>
+      <tr><td><b>Premium v2（可选）</b></td><td>多设备云同步（需 Creem 托管邮箱关联；属「做大之后」，不在本期）</td><td><span class="pill p-med">需邮箱</span></td></tr>
+    </table>
+    <div class="good">
+      <p><b>设计取舍：</b>v1 付费层<b>全部做成纯本地增强</b>（无限账单 / 提前天数 / 导出 / 多 ZIP），<b>不碰账号</b>——彻底保持「无账号、无追踪」叙事，把隐私申报冲击压到最低。同步类作为 v2 再说。</p>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <h2><span class="n">5</span>法律三件套 + 隐私申报变更</h2>
+    <ul>
+      <li><b>Terms of Service（服务条款）</b>——CWS 要求付费须有 ToS 链接。</li>
+      <li><b>Refund Policy（退款政策）</b>——CWS 硬性要求付费须有<b>退款政策链接</b>，否则拒绝上架。</li>
+      <li><b>隐私政策（修订版）</b>——在现有 <code>allmoneycalc.com/pennypilot-privacy/privacy</code> 基础上，<b>新增一节「支付由 Creem 处理」</b>：说明 Creem 作为 MoR 持有账单邮箱与卡信息，扩展本身仅存 license key。</li>
+      <li><b>CWS 数据收集申报变更</b>——当前申报「零收集」。引入订阅后，若走 License Key（不存邮箱）仍可维持「极简 / 零敏感收集」；若 v2 加同步则需改申报 + 重填隐私权规范。<b>本期 v1 维持零敏感收集叙事。</b></li>
+    </ul>
+    <div class="warn">
+      <b>披露透明：</b>商店长描述须写明「含可选订阅档（Premium）」与权益，<b>不得隐瞒</b>付费存在——隐瞒本身会引发差评 + 违反 CWS 披露要求。
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <h2><span class="n">6</span>资金回境合规提醒（大陆个人）</h2>
+    <div class="warn">
+      <ul>
+        <li><b>Creem → 支付宝直接到账</b>最顺；或经 <b>Payoneer / 万里汇（WorldFirst）</b>结汇到国内卡。</li>
+        <li>个人每年 <b>5 万美元</b>外汇额度；<b>经营收入</b>建议注册<b>个体户 / 公司并申报</b>，避免大额走个人账户的冻卡 / 税务风险。</li>
+        <li>起步小额（&lt;$1k MRR）用 Creem + 支付宝即可，合规压力小；量级上去再规整主体。</li>
+        <li>MoR 已替你处理<b>海外 VAT / 销售税</b>，你无需自理全球税——这是 MoR 相对 Stripe 自建的最大省心点。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <h2><span class="n">7</span>执行步骤（过审后时序）</h2>
+    <div class="good">
+      <p><b>现在（审核中）：</b>免费版保持「零收集」不动，<b>不在审核中加付费</b>，避免拖复审。</p>
+    </div>
+    <ol>
+      <li>CWS 审核通过、上线稳定（先跑通免费版真实安装 / 留存）。</li>
+      <li>注册 <b>Creem</b>，创建 PennyPilot 产品（订阅档 + License Key 模式），拿 API / Webhook 密钥。</li>
+      <li>部署 <b>Cloudflare Worker</b> 做 entitlement 校验后端（KV / D1 存状态）。</li>
+      <li>扩展接入：background 启动查 Worker；popup 加「Upgrade」按钮 → <code>openCheckout()</code>；按 entitlement 门控显示 Premium 卡片（之前为过审撤掉的卡片加回来）。</li>
+      <li>写 <b>ToS / Refund Policy</b>（托管于 allmoneycalc.com 子路径），<b>修订隐私政策</b>加「支付由 Creem 处理」一节。</li>
+      <li>商店长描述补「含可选 Premium 订阅」透明说明。</li>
+      <li>作为<b>新版本（v2）提交</b> → CWS 复审（这次会审支付流程、披露、隐私申报）。</li>
+      <li>复审通过后，把落地页 <code>index.html</code> / <code>cta.html</code> 两处 <code>TODO</code> 商店 URL 替换成最终商品链接，重推 AllMoneyCalc。</li>
+    </ol>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <h2><span class="n">8</span>风险清单</h2>
+    <table>
+      <tr><th>风险</th><th>等级</th><th>缓解</th></tr>
+      <tr><td>审核中加付费 → 拖复审 / 驳回</td><td><span class="pill p-hi">高</span></td><td>付费一律等过审后 v2 单独提交</td></tr>
+      <tr><td>本地伪造 isPremium 被破解</td><td><span class="pill p-med">中</span></td><td>服务端（Worker）校验 entitlement，客户端只显示</td></tr>
+      <tr><td>隐私申报与事实不符 → 复审打回</td><td><span class="pill p-med">中</span></td><td>v1 走 License Key 不存邮箱，维持极简申报；v2 同步再改</td></tr>
+      <tr><td>Stripe 虚假海外资料封号冻资</td><td><span class="pill p-hi">高</span></td><td>坚决用 Creem(MoR)，不碰 Stripe 个人直连</td></tr>
+      <tr><td>大额经营收入走个人卡冻卡</td><td><span class="pill p-med">中</span></td><td>起步小额用 Creem+支付宝；量级上注册个体户申报</td></tr>
+      <tr><td>隐瞒付费 → 差评 + 违规</td><td><span class="pill p-med">中</span></td><td>商店描述透明写明订阅档与权益</td></tr>
+    </table>
+  </div>
+
+  <div class="foot">
+    本蓝图为 PennyPilot 项目内部战略文档（非站点外显内容），中文撰写、不进入 CWS 商店文案。所有支付商支持国家 / 费率 / CWS 政策均基于 2026-08-25 联网核查，落地前请再核一次官方页（政策易变）。执行以「过审后 v2 单独复审」为前置条件。
+  </div>
+
+</div>
+</body>
+</html>
