@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PennyPilot — Tax & Bill Deadline Reminders",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enter your ZIP to auto-fill your state's tax rate, then add your own tax & bill due-date reminders. No statement scan. Private.",
   "permissions": ["alarms", "notifications", "storage", "sidePanel"],
   "background": {
