@@ -117,7 +117,7 @@ async function updatePreview() {
   if (!st && zip && zip.length >= 3 && ZIP.map[zip.slice(0, 3)]) st = ZIP.map[zip.slice(0, 3)];
 
   const el = $('preview');
-  if (!st) { el.innerHTML = '<span class="muted">No location set — you’ll only get federal-date reminders. Add your ZIP (or state) to unlock local ones.</span>'; return; }
+  if (!st) { el.innerHTML = '<span class="muted">No location set — you’ll only get federal-date reminders. Add your ZIP (or state) to auto-fill your state’s tax rate.</span>'; return; }
   const s = CAL.states[st];
   let html =
     `<div class="row"><span class="k">State</span><span class="v">${PP.esc(s.name)}</span></div>
